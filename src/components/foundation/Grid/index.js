@@ -1,5 +1,6 @@
-import styled, { css } from "styled-components";
-import { breakpointsMedia } from "../../../theme/utils/breakpointsMedia";
+import styled, { css } from 'styled-components';
+import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
+import cssInline from '../../../theme/utils/cssInline';
 
 const Container = styled.div`
     padding-left: 28px;
@@ -8,21 +9,21 @@ const Container = styled.div`
     margin-right: auto;
     width: 100%;
     ${breakpointsMedia({
-        sm: css`
+    sm: css`
             max-width: 576px; 
         `,
-        md: css`
+    md: css`
             max-width: 768px;
             padding-right: 16px;
             padding-left: 16px; 
         `,
-        lg: css`
+    lg: css`
             max-width: 1160px; 
         `,
-        xl: css`
+    xl: css`
             max-width: 1222px;
         `,
-    })};
+  })};
 `;
 
 const Row = styled.div`
@@ -38,52 +39,50 @@ const Col = styled.div`
     max-width: 100%;
     flex-basis: 0;
     flex-grow: 1;
-    ${function({col}){
-        if (typeof col === 'number') {
-            return css`
+    ${({ col }) => {
+    if (typeof col === 'number') {
+      return css`
                 flex: 0 0 ${(100 * col) / 12}%;
                 max-width: ${(100 * col) / 12}%;
             `;
-        }
-        
-        const breakPoints = Object.keys(col);
-        return breakPoints.map((breakPoint) => 
-            breakpointsMedia({
-                [breakPoint]: css`
+    }
+
+    const breakPoints = Object.keys(col);
+    return breakPoints.map((breakPoint) => breakpointsMedia({
+      [breakPoint]: css`
                     flex: 0 0 ${(100 * col[breakPoint]) / 12}%;
                     max-width: ${(100 * col[breakPoint]) / 12}%;
                 `,
-            })            
-        )
-
-    }};
+    }));
+  }};
     
-    ${function({offset}){
-        if (typeof offset === 'number') {
-            return css`
+    ${({ offset }) => {
+    if (typeof offset === 'number') {
+      return css`
                 margin-left: ${(100 * offset) / 12}%;
             `;
-        }
-        
-        const breakPoints = Object.keys(offset);
-        return breakPoints.map((breakPoint) => 
-            breakpointsMedia({
-                [breakPoint]: css`
+    }
+
+    const breakPoints = Object.keys(offset);
+    return breakPoints.map((breakPoint) => breakpointsMedia({
+      [breakPoint]: css`
                     margin-left: ${(100 * offset[breakPoint]) / 12}%;
                 `,
-            })            
-        )
+    }));
+  }};
 
-    }};
+    ${cssInline}
 `;
 
-export const Grid = {
-    Container,
-    Row,
-    Col,
-}
+const Grid = {
+  Container,
+  Row,
+  Col,
+};
 
 Col.defaultProps = {
-    col: {},
-    offset: {},
-}
+  col: {},
+  offset: {},
+};
+
+export { Grid as default };
