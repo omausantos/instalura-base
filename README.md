@@ -1,84 +1,136 @@
-# Example app with styled-components
+# 📸 Instalura: Bootcamp de Front-End Avançado 2021
 
-This example features how you use a different styling solution than [styled-jsx](https://github.com/vercel/styled-jsx) that also supports universal styles. That means we can serve the required styles for the first render within the HTML and then load the rest in the client. In this case we are using [styled-components](https://github.com/styled-components/styled-components).
+> Projeto desenvolvido no treinamento `Bootcamp JAM Stack 2021`, com foco na utilização do React com Styled Components.
+> <br />Layout inspirado no Instagram, por isso até do nome do projeto 😅. Veja a versão completa em [Figma](https://www.figma.com/file/Veefm1pjkeTFcJC7BUqHge/)
+> <br />Uma simples homenagem ao melhor ator do mundo. Vida eterna ao Mestre Nicolas Cage!
 
-For this purpose we are extending the `<Document />` and injecting the server side rendered styles into the `<head>`, and also adding the `babel-plugin-styled-components` (which is required for server side rendering). Additionally we set up a global [theme](https://www.styled-components.com/docs/advanced#theming) for styled-components using NextJS custom [`<App>`](https://nextjs.org/docs/advanced-features/custom-app) component.
+[![Instalura por @omausantos](https://img.shields.io/badge/MauSantos-Instalura-informational)](https://instalura-base-omausantos.vercel.app/)
+![LICENSE MIT](https://img.shields.io/github/license/omausantos/instalura-base)
+[![BootcampAlura](https://img.shields.io/badge/BootCamp-Alura-orange)](https://bootcamps.alura.com.br/)
 
-## Preview
+[![Mockup Instalura](https://alura.mauricio.dev.br/smartmockups.jpg)](https://instalura-base-omausantos.vercel.app/)
+<br />Última versão em [Vercel @omausantos](https://instalura-base-omausantos.vercel.app/)
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+## ⚙ Tecnologias e Dependências
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-styled-components)
+<p style="display:flex;">
+<img src="https://raw.githubusercontent.com/styled-components/brand/master/styled-components.png" width="60" alt="Styled Components" title="Styled Components" />
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" width="50" alt="React" title="React" />
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" width="50" alt="CSS3" title="CSS3" />
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original-wordmark.svg" width="50" alt="NextJS" title="NextJS" />
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" width="50" alt="HTML5" title="HTML5" />
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg" width="50" alt="Figma" title="Figma" />
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="50" alt="Javascript" title="Javascript" />
+</p>
 
-## Deploy your own
+#### Package.json
+* [`lodash`](https://lodash.com/) biblioteca javascript com diversas funções que auxiliam na execução de tarefas complexas.
+* [`Styled components`](https://styled-components.com/) criação de componentes HTML e gestão de CSS Inline.
+* [`ESLint`](https://eslint.org/) ferramenta para padronização de código, identificação de erros e unificação.
+* [`propTypes`](https://www.npmjs.com/package/prop-types) para analise e controle de props adicionais.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+#### VSCode
+* [`VS Code ESLint extension`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) integração do ESLint do projeto junto ao editor, propondo correções em desenvolvimento.
+* [`EditorConfig for VS Code`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) plugin para criação e gestão do arquivo .editorconfig, o qual configuração espaçamento, quebras de linhas e outras opções do seu editor.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-styled-components&project-name=with-styled-components&repository-name=with-styled-components)
+## 🤓 Bora codar?
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
+01. Inicie realizando o download do projeto
 ```bash
-npx create-next-app --example with-styled-components with-styled-components-app
-# or
-yarn create next-app --example with-styled-components with-styled-components-app
+git clone https://github.com/omausantos/instalura-base.git
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+02. Agora é instalar as dependencias via NPM ou YARN (observe que deve estar dentro da pasta onde encotra-se o arquivo package.json)
+```bash
+npm install
+OU
+yarn install
+```
 
-### Try it on CodeSandbox
+03. Então é hora de inicializar o projeto!
+```bash
+npm run dev
+OU
+yarn dev
+```
 
-[Open this example on CodeSandbox](https://codesandbox.io/s/github/vercel/next.js/tree/canary/examples/with-styled-components)
+04. Tudo pronto? Acesse http://localhost:3000/ e navegue no site
 
-### Notes
+### 📦 Módulos do Bootcampo
+> O treinamento é composto por 6 módulos principais, onde foram separados de modo que o aluno posso evoluir o projeto junto. Além de disponibilização de código após cada aula para melhor didática.
 
-When wrapping a [Link](https://nextjs.org/docs/api-reference/next/link) from `next/link` within a styled-component, the [as](https://styled-components.com/docs/api#as-polymorphic-prop) prop provided by `styled` will collide with the Link's `as` prop and cause styled-components to throw an `Invalid tag` error. To avoid this, you can either use the recommended [forwardedAs](https://styled-components.com/docs/api#forwardedas-prop) prop from styled-components or use a different named prop to pass to a `styled` Link.
+- [x] **Módulo 01:** JAMStack e layout com React
+- [ ] **Módulo 02:** State e Forms + boas práticas de Git e GitHub
+- [ ] **Módulo 03:** Se aprofundando no NextJS
+- [ ] **Módulo 04:** Testes com Cypress, Jest e React Testing Library
+- [ ] **Módulo 05:** Área autenticada e gerenciador de conteúdo (CMS)
+- [ ] **Módulo 06:** Storybook + TypeScript
+
+### 🎣 Customização do código (Refatoração)
+
+> Conforme execução das aulas é percetvivel na necessidade de refatorar alguns modulos, principalmente quando há código que podem ser otimizados.
+
+###### Módulo 01
+Além do CSS por componente, também é possivel incluir na instancia (chamada do componente) CSS para customização com regras de breakpoint (MediaQueries).
+<br /> Então criei o componente cssInline, que carrega automaticamente todos os CSS's que forem incluídos no *props.cssinline*
 
 <details>
-<summary>Click to expand workaround example</summary>
+<summary>Click que ver o código</summary>
 <br />
 
-**components/StyledLink.js**
+**instalura-base/src/theme/utils/cssInline.js**
 
 ```javascript
-import Link from 'next/link'
-import styled from 'styled-components'
+import propToStyle from './propToStyle';
 
-const StyledLink = ({ as, children, className, href }) => (
-  <Link href={href} as={as} passHref>
-    <a className={className}>{children}</a>
-  </Link>
-)
-
-export default styled(StyledLink)`
-  color: #0075e0;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    color: #40a9ff;
-  }
-
-  &:focus {
-    color: #40a9ff;
-    outline: none;
-    border: 0;
-  }
-`
+export default function cssInline() {
+  // eslint-disable-next-line consistent-return
+  return ({ cssinline }) => {
+    if (cssinline) {
+      const propertyCss = Object.keys(cssinline);
+      return propertyCss.map((itemCss) => propToStyle(itemCss));
+    }
+  };
+}
 ```
 
-**pages/index.js**
+**instalura-base/src/theme/utils/propToStyle.js**
 
 ```javascript
-import StyledLink from '../components/StyledLink'
+import breakpointsMedia from './breakpointsMedia';
 
-export default () => (
-  <StyledLink href="/post/[pid]" forwardedAs="/post/abc">
-    First post
-  </StyledLink>
-)
+export default function propToStyle(propName) {
+  // eslint-disable-next-line consistent-return
+  return (props) => {
+    const propValue = props.cssinline[propName];
+
+    if (typeof propValue === 'string') {
+      return {
+        [propName]: props.cssinline[propName],
+      };
+    }
+
+    if (typeof propValue === 'object') {
+      return breakpointsMedia({
+        xs: {
+          [propName]: propValue.xs,
+        },
+        sm: {
+          [propName]: propValue.sm,
+        },
+        md: {
+          [propName]: propValue.md,
+        },
+        lg: {
+          [propName]: propValue.lg,
+        },
+        xl: {
+          [propName]: propValue.xl,
+        },
+      });
+    }
+  };
+}
 ```
 
 </details>
