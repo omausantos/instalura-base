@@ -32,12 +32,18 @@ export default function Footer(props) {
         <img src="https://www.alura.com.br/assets/img/alura-logo.svg" alt="Logo Alura" />
       </a>
       <p>
-        Orgulhosamente criado durante
+        Orgulhosamente desenvolvido por
+        {' '}
+        <a href="https://www.linkedin.com/in/mauricio-santos/" target="_blank" rel="noreferrer">
+          <span>Mauricio Santos</span>
+        </a>
+        {' '}
+        durante
         {' '}
         o
         {' '}
         <a href="https://www.alura.com.br/">
-          <span>Bootcamp Alura SpaceJAM Stack</span>
+          <span>Bootcamp Alura SpaceJAM Stack 2021</span>
         </a>
       </p>
     </FooterWrapper>

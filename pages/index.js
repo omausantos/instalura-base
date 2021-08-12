@@ -5,8 +5,11 @@ import Text from '../src/components/foundation/Text';
 import Button from '../src/components/commons/Button';
 import Grid from '../src/components/foundation/Grid';
 import Box from '../src/components/foundation/Box';
+import Modal from '../src/components/commons/Modal';
 
 export default function Home() {
+  const [isModalOpen, setModalState] = React.useState(false);
+
   return (
     <Box
       cssinline={{
@@ -23,6 +26,28 @@ export default function Home() {
         },
       }}
     >
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalState(false);
+        }}
+      >
+        {(propsDoModal) => (
+          <Box
+            cssinline={{
+              backgroundColor: '#fff',
+            }}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...propsDoModal}
+          >
+            <div>
+              Modal com DIV in BOX
+            </div>
+          </Box>
+        )}
+      </Modal>
+
       <Menu />
 
       <Grid.Container>
@@ -90,6 +115,9 @@ export default function Home() {
                   xs: '40px',
                   md: 'initial',
                 },
+              }}
+              onClick={() => {
+                setModalState(!isModalOpen);
               }}
             >
               Cadastrar
