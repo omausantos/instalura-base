@@ -41,9 +41,7 @@ export default function Home() {
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...propsDoModal}
           >
-            <div>
-              Modal com DIV in BOX
-            </div>
+            Modal com DIV in BOX
           </Box>
         )}
       </Modal>
