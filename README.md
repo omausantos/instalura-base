@@ -28,6 +28,7 @@
 * [`Styled components`](https://styled-components.com/) criação de componentes HTML e gestão de CSS Inline.
 * [`ESLint`](https://eslint.org/) ferramenta para padronização de código, identificação de erros e unificação.
 * [`propTypes`](https://www.npmjs.com/package/prop-types) para analise e controle de props adicionais.
+* [`FrameMotion`](https://www.framer.com/motion/) criação de animações em React com styled-components.
 
 #### VSCode
 * [`VS Code ESLint extension`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) integração do ESLint do projeto junto ao editor, propondo correções em desenvolvimento.
