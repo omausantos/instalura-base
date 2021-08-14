@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import errorAnimation from './animations/error.json';
+import successAnimation from './animations/success.json';
 import Button from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import Box from '../../foundation/Box';
 import Grid from '../../foundation/Grid';
 import Text from '../../foundation/Text';
+import MensagemCadastro from './animations';
 
-const BurgerImageStyle = styled.svg`
+const ButtonImage = styled.svg`
     position: absolute;
     right: 24px;
     top: 24px;
@@ -16,7 +19,7 @@ const BurgerImageStyle = styled.svg`
 // eslint-disable-next-line react/prop-types
 function ButtonClose({ onClose }) {
   return (
-    <BurgerImageStyle
+    <ButtonImage
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -28,15 +31,24 @@ function ButtonClose({ onClose }) {
     >
       <path d="M18 6L6 18" stroke="#88989E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M6 6L18 18" stroke="#88989E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </BurgerImageStyle>
+    </ButtonImage>
   );
 }
 
+const formStates = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+};
+
 function FormContent() {
   const [userInfo, setUserInfo] = React.useState({
-    usuario: 'omausantos',
-    email: 'mauwebjc@gmail.com',
+    username: 'omausantos',
+    name: 'Mauricio Santos',
   });
+  const [isFormSubmited, setIsFormSubmited] = React.useState(false);
+  const [submissionStatus, setSubmissionStatus] = React.useState(formStates.DEFAULT);
 
   function handleChange(event) {
     const fieldName = event.target.getAttribute('name');
@@ -46,11 +58,38 @@ function FormContent() {
     });
   }
 
-  const isFormInvalid = userInfo.usuario.length === 0 || userInfo.email.length === 0;
+  const isFormInvalid = userInfo.username.length === 0 || userInfo.name.length === 0;
 
   return (
     <form onSubmit={(event) => {
       event.preventDefault();
+      setIsFormSubmited(true);
+
+      const userDTO = {
+        username: userInfo.username,
+        name: userInfo.name,
+      };
+
+      fetch('https://instalura-api.vercel.app/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userDTO),
+      })
+        .then((respostaDoServidor) => {
+          if (respostaDoServidor.ok) {
+            return respostaDoServidor.json();
+          }
+
+          throw new Error('Não foi possível cadastrar o usuário agora');
+        })
+        .then(() => {
+          setSubmissionStatus(formStates.DONE);
+        })
+        .catch(() => {
+          setSubmissionStatus(formStates.ERROR);
+        });
     }}
     >
 
@@ -73,9 +112,9 @@ function FormContent() {
 
       <div>
         <TextField
-          placeholder="E-mail"
-          name="email"
-          value={userInfo.email}
+          placeholder="Nome"
+          name="name"
+          value={userInfo.name}
           onChange={handleChange}
         />
       </div>
@@ -83,8 +122,8 @@ function FormContent() {
       <div>
         <TextField
           placeholder="Usuario"
-          name="usuario"
-          value={userInfo.usuario}
+          name="username"
+          value={userInfo.username}
           onChange={handleChange}
         />
       </div>
@@ -97,6 +136,23 @@ function FormContent() {
       >
         Cadastrar
       </Button>
+
+      {isFormSubmited && submissionStatus === formStates.DONE && (
+      <MensagemCadastro
+        msg="Cadastro efetuado com sucesso!"
+        color="green"
+        animation={successAnimation}
+      />
+      )}
+
+      {isFormSubmited && submissionStatus === formStates.ERROR && (
+      <MensagemCadastro
+        msg="Deu ruim, tentar novamente!"
+        color="red"
+        animation={errorAnimation}
+      />
+      )}
+
     </form>
   );
 }
