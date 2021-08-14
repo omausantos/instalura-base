@@ -31,6 +31,7 @@ const Row = styled.div`
     flex-wrap: wrap;
     margin-right: -16px;
     margin-left: -16px;
+    ${cssInline}
 `;
 
 const Col = styled.div`
@@ -42,6 +43,8 @@ const Col = styled.div`
     ${({ col }) => {
     if (typeof col === 'number') {
       return css`
+                flex-grow: 0;
+                flex-shrink: 0;
                 flex: 0 0 ${(100 * col) / 12}%;
                 max-width: ${(100 * col) / 12}%;
             `;
@@ -50,6 +53,8 @@ const Col = styled.div`
     const breakPoints = Object.keys(col);
     return breakPoints.map((breakPoint) => breakpointsMedia({
       [breakPoint]: css`
+                    flex-grow: 0;
+                    flex-shrink: 0;
                     flex: 0 0 ${(100 * col[breakPoint]) / 12}%;
                     max-width: ${(100 * col[breakPoint]) / 12}%;
                 `,
