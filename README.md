@@ -29,6 +29,9 @@
 * [`ESLint`](https://eslint.org/) ferramenta para padronização de código, identificação de erros e unificação.
 * [`propTypes`](https://www.npmjs.com/package/prop-types) para analise e controle de props adicionais.
 * [`FrameMotion`](https://www.framer.com/motion/) criação de animações em React com styled-components.
+* [`Husky`](https://typicode.github.io/husky/) inclusão de gatilhos de ação automaticos.
+* [`cz-conventional-changelog`](https://github.com/commitizen/cz-cli) automatização de padrinozação de commit.
+* [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint) garantia que qualquer commit seja padronizado.
 
 #### VSCode
 * [`VS Code ESLint extension`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) integração do ESLint do projeto junto ao editor, propondo correções em desenvolvimento.
