@@ -6,7 +6,8 @@
     "start": "next start",
     "lint": "next lint",
     "commit": "git add . && cz",
-    "teste": "npx --no-install commitlint --edit \"$1\""
+    "teste": "echo 'should fail' | commitlint --config ~/.commitlintrc.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",
@@ -32,14 +33,8 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^4.3.8",
+    "husky": "^7.0.1",
     "shelljs": "^0.8.4"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "license": "MIT",
   "config": {
