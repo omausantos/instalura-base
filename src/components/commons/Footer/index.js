@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+
 
 const FooterWrapper = styled.footer`
   padding: 14px;
