@@ -1,5 +1,4 @@
 
-
 const FooterWrapper = styled.footer`
   padding: 14px;
   display: flex;

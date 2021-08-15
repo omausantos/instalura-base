@@ -4,7 +4,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",
@@ -29,11 +30,6 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.1",
     "shelljs": "^0.8.4"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn lint"
-    }
   },
   "license": "MIT"
 }
