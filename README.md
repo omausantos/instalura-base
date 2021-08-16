@@ -64,7 +64,7 @@ yarn dev
 > O treinamento é composto por 6 módulos principais, onde foram separados de modo que o aluno posso evoluir o projeto junto. Além de disponibilização de código após cada aula para melhor didática.
 
 - [x] **Módulo 01:** JAMStack e layout com React
-- [ ] **Módulo 02:** State e Forms + boas práticas de Git e GitHub
+- [x] **Módulo 02:** State e Forms + boas práticas de Git e GitHub
 - [ ] **Módulo 03:** Se aprofundando no NextJS
 - [ ] **Módulo 04:** Testes com Cypress, Jest e React Testing Library
 - [ ] **Módulo 05:** Área autenticada e gerenciador de conteúdo (CMS)
@@ -137,4 +137,67 @@ export default function propToStyle(propName) {
 }
 ```
 
+</details>
+
+###### Módulo 02
+Para reutilização do layout das mensagens de retorno do formulário de cadastro, foi necessário um novo componente.
+<br /> Então criei o MensagemCadastro, que recebe três valores: *props.color* (cor do texto), *props.animation* (icone animado) e *props.msg* (mensagem que deve aparecer)
+
+<details>
+<summary>Click que ver o código</summary>
+<br />
+
+**instalura-base/src/components/patterns/FormCadastro/animations/index.js**
+
+```javascript
+import React from 'react';
+import { Lottie } from '@crello/react-lottie';
+import PropTypes from 'prop-types';
+import Box from '../../../foundation/Box';
+import Grid from '../../../foundation/Grid';
+import Text from '../../../foundation/Text';
+
+export default function MensagemCadastro({ color, animation, msg }) {
+  return (
+    <Box
+      cssinline={{
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
+      <Grid.Container>
+        <Grid.Row>
+          <Grid.Col
+            col={3}
+          >
+            <Lottie
+              width="100%"
+              config={{ animationData: animation, loop: true, autoplay: true }}
+            />
+          </Grid.Col>
+          <Grid.Col
+            col={9}
+          >
+            <Text
+              tag="p"
+              cssinline={{
+                color,
+              }}
+            >
+              {msg}
+            </Text>
+          </Grid.Col>
+        </Grid.Row>
+      </Grid.Container>
+    </Box>
+  );
+}
+
+MensagemCadastro.propTypes = {
+  color: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  animation: PropTypes.object.isRequired,
+  msg: PropTypes.string.isRequired,
+};
+```
 </details>
