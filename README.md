@@ -1,4 +1,4 @@
-# 📸 Instalura: Bootcamp de Front-End Avançado 2021
+# 📸 InstAlura: Bootcamp de Front-End Avançado 2021
 
 > Projeto desenvolvido no treinamento `Bootcamp JAM Stack 2021`, com foco na utilização do React com Styled Components.
 > <br />Layout inspirado no Instagram, por isso até do nome do projeto 😅. Veja a versão completa em [Figma](https://www.figma.com/file/Veefm1pjkeTFcJC7BUqHge/)
