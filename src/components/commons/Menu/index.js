@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Logo from '../../../theme/Logo';
 import Text from '../../foundation/Text';
 import Button from '../Button';
@@ -19,7 +20,7 @@ const links = [
   },
 ];
 
-export default function Menu() {
+export default function Menu({ onOpenModal }) {
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
@@ -38,10 +39,14 @@ export default function Menu() {
         <Button ghost variant="secondary.main">
           Entrar
         </Button>
-        <Button variant="primary.main">
+        <Button variant="primary.main" onClick={onOpenModal}>
           Cadastrar
         </Button>
       </MenuWrapper.RightSide>
     </MenuWrapper>
   );
 }
+
+Menu.propTypes = {
+  onOpenModal: PropTypes.func.isRequired,
+};
