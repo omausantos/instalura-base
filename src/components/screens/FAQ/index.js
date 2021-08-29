@@ -13,9 +13,11 @@ export default function FAQScreen({ faqCategories }) {
 
   return (
     <Box
-      display="flex"
-      flexDirection="column"
-      flex="1"
+      cssinline={{
+        display: 'flex',
+        flexDirection: 'column',
+        flex: '1',
+      }}
     >
       <Modal
         isOpen={isModalOpen}
@@ -34,52 +36,71 @@ export default function FAQScreen({ faqCategories }) {
 
       <Grid.Container style={{ flex: 1 }}>
         <Grid.Row
-          marginTop={{ xs: '32px', md: '100px' }}
-          marginBottom={{ xs: '32px', md: '100px' }}
-          justifyContent="center"
+          cssinline={{
+            marginTop: { xs: '32px', md: '100px' },
+            marginBottom: { xs: '32px', md: '100px' },
+            justifyContent: 'center',
+          }}
         >
           <Grid.Col
-            value={{ xs: 12, md: 12 }}
-            flex={1}
+            col={{ xs: 12, md: 12 }}
+            cssinline={{
+              flex: '1',
+            }}
           >
             <Text
               variant="title"
               tag="h2"
               color="tertiary.main"
-              textAlign="center"
+              cssinline={{
+                textAlign: 'center',
+              }}
             >
               Como podemos te ajudar?
             </Text>
           </Grid.Col>
         </Grid.Row>
         <Grid.Row
-          alignItems="flex-start"
-          justifyContent="center"
-          flex="1"
+          cssinline={{
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            flex: '1',
+          }}
         >
           {
             faqCategories && faqCategories.map((category) => (
               <Grid.Col
-                value={{ xs: 12, md: 3 }}
-                flex={1}
+                col={{ xs: 12, md: 3 }}
                 key={category.title}
+                cssinline={{
+                  flex: '1',
+                }}
               >
                 <Box
-                  width="100%"
+                  cssinline={{
+                    width: '100%',
+                  }}
+
                 >
                   <Text
                     variant="subTitle"
                     tag="h2"
                     color="tertiary.main"
-                    marginBottom="26px"
+                    cssinline={{
+                      marginBottom: '26px',
+                    }}
+
                   >
                     {category.title}
                   </Text>
 
                   <Box
                     as="ul"
-                    padding="0"
-                    listStyle="none"
+                    cssinline={{
+                      padding: '0',
+                      listStyle: 'none',
+                    }}
+
                   >
                     {category.questions.map((question) => (
                       <li key={question.title}>
