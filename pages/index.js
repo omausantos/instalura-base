@@ -109,6 +109,9 @@ export default function Home() {
           },
         },
       }}
+      seoProps={{
+        headTitle: 'Home',
+      }}
     >
       <HomeScreen />
     </WebsitePageWrapper>

@@ -6,12 +6,12 @@ import Menu from '../../commons/Menu';
 import Modal from '../../commons/Modal';
 import Box from '../../foundation/Box';
 import FormCadastro from '../../patterns/FormCadastro';
+import { SEO } from '../../commons/SEO';
 
 export const WebsitePageContext = React.createContext({
   toggleModalCadastro: () => {},
 });
 
-// eslint-disable-next-line no-unused-vars
 export default function WebsitePageWrapper({ seoProps, pageBoxProps, children }) {
   const [isModalOpen, setModalState] = React.useState(false);
   const cssinline = {
@@ -26,6 +26,7 @@ export default function WebsitePageWrapper({ seoProps, pageBoxProps, children })
         },
       }}
     >
+      <SEO headTitle={seoProps.headTitle} />
 
       <Box
         cssinline={cssinline}
