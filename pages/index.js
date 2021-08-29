@@ -1,47 +1,27 @@
 import React from 'react';
-import Menu from '../src/components/commons/Menu';
-import Footer from '../src/components/commons/Footer';
 import Text from '../src/components/foundation/Text';
 import Button from '../src/components/commons/Button';
 import Grid from '../src/components/foundation/Grid';
-import Box from '../src/components/foundation/Box';
-import Modal from '../src/components/commons/Modal';
-import FormCadastro from '../src/components/patterns/FormCadastro';
+import WebsitePageWrapper from '../src/components/wrappers/WebsitePage';
 
 export default function Home() {
   const [isModalOpen, setModalState] = React.useState(false);
 
   return (
-    <Box
-      cssinline={{
-        flex: '2',
-        display: 'flex',
-        flexWrap: 'wrap',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        backgroundImage: 'url(/images/bubbles.svg)',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: {
-          xs: 'center right',
-          md: 'bottom right',
+    <WebsitePageWrapper
+      pageBoxProps={{
+        cssinline: {
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          backgroundImage: 'url(/images/bubbles.svg)',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: {
+            xs: 'center right',
+            md: 'bottom right',
+          },
         },
       }}
     >
-
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalState(false);
-        }}
-      >
-        {(propsDoModal) => (
-          <FormCadastro propsDoModal={propsDoModal} />
-        )}
-      </Modal>
-
-      <Menu
-        onOpenModal={() => setModalState(true)}
-      />
 
       <Grid.Container>
         <Grid.Row>
@@ -129,7 +109,6 @@ export default function Home() {
         </Grid.Row>
       </Grid.Container>
 
-      <Footer />
-    </Box>
+    </WebsitePageWrapper>
   );
 }
