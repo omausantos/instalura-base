@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Footer from '../../commons/Footer';
@@ -12,7 +11,9 @@ export const WebsitePageContext = React.createContext({
   toggleModalCadastro: () => {},
 });
 
-export default function WebsitePageWrapper({ seoProps, pageBoxProps, children }) {
+export default function WebsitePageWrapper({
+  seoProps, pageBoxProps, menuProps, children,
+}) {
   const [isModalOpen, setModalState] = React.useState(false);
   const cssinline = {
     flex: '1', display: 'flex', flexDirection: 'column', ...pageBoxProps.cssinline,
@@ -41,9 +42,11 @@ export default function WebsitePageWrapper({ seoProps, pageBoxProps, children })
             <FormCadastro propsDoModal={propsDoModal} />
           )}
         </Modal>
+        {menuProps.display && (
         <Menu
           onOpenModal={() => setModalState(true)}
         />
+        )}
 
         {children}
 
