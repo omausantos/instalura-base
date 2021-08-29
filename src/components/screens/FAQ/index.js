@@ -31,7 +31,7 @@ export default function FAQScreen({ faqCategories }) {
       </Modal>
 
       <Menu
-        onCadastrarClick={() => setModalState(true)}
+        onOpenModal={() => setModalState(true)}
       />
 
       <Grid.Container style={{ flex: 1 }}>
