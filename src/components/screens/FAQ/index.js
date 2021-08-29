@@ -3,71 +3,44 @@ import PropTypes from 'prop-types';
 import Text from '../../foundation/Text';
 import Box from '../../foundation/Box';
 import Grid from '../../foundation/Grid';
-import Menu from '../../commons/Menu';
-import Footer from '../../commons/Footer';
-import Modal from '../../commons/Modal';
-import FormCadastro from '../../patterns/FormCadastro';
 
 export default function FAQScreen({ faqCategories }) {
-  const [isModalOpen, setModalState] = React.useState(false);
-
   return (
-    <Box
-      cssinline={{
-        display: 'flex',
-        flexDirection: 'column',
-        flex: '1',
-      }}
-    >
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalState(false);
+
+    <Grid.Container style={{ flex: 1 }}>
+      <Grid.Row
+        cssinline={{
+          marginTop: { xs: '32px', md: '100px' },
+          marginBottom: { xs: '32px', md: '100px' },
+          justifyContent: 'center',
         }}
       >
-        {(propsDoModal) => (
-          <FormCadastro propsDoModal={propsDoModal} />
-        )}
-      </Modal>
-
-      <Menu
-        onOpenModal={() => setModalState(true)}
-      />
-
-      <Grid.Container style={{ flex: 1 }}>
-        <Grid.Row
+        <Grid.Col
+          col={{ xs: 12, md: 12 }}
           cssinline={{
-            marginTop: { xs: '32px', md: '100px' },
-            marginBottom: { xs: '32px', md: '100px' },
-            justifyContent: 'center',
-          }}
-        >
-          <Grid.Col
-            col={{ xs: 12, md: 12 }}
-            cssinline={{
-              flex: '1',
-            }}
-          >
-            <Text
-              variant="title"
-              tag="h2"
-              color="tertiary.main"
-              cssinline={{
-                textAlign: 'center',
-              }}
-            >
-              Como podemos te ajudar?
-            </Text>
-          </Grid.Col>
-        </Grid.Row>
-        <Grid.Row
-          cssinline={{
-            alignItems: 'flex-start',
-            justifyContent: 'center',
             flex: '1',
           }}
         >
-          {
+          <Text
+            variant="title"
+            tag="h2"
+            color="tertiary.main"
+            cssinline={{
+              textAlign: 'center',
+            }}
+          >
+            Como podemos te ajudar?
+          </Text>
+        </Grid.Col>
+      </Grid.Row>
+      <Grid.Row
+        cssinline={{
+          alignItems: 'flex-start',
+          justifyContent: 'center',
+          flex: '1',
+        }}
+      >
+        {
             faqCategories && faqCategories.map((category) => (
               <Grid.Col
                 col={{ xs: 12, md: 3 }}
@@ -119,11 +92,8 @@ export default function FAQScreen({ faqCategories }) {
               </Grid.Col>
             ))
           }
-        </Grid.Row>
-      </Grid.Container>
-
-      <Footer />
-    </Box>
+      </Grid.Row>
+    </Grid.Container>
   );
 }
 
