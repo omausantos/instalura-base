@@ -2,7 +2,8 @@ import React from 'react';
 import Text from '../src/components/foundation/Text';
 import Button from '../src/components/commons/Button';
 import Grid from '../src/components/foundation/Grid';
-import WebsitePageWrapper, { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
+import { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
 function HomeScreen() {
   const websitePageContext = React.useContext(WebsitePageContext);
@@ -94,26 +95,15 @@ function HomeScreen() {
   );
 }
 
-export default function Home() {
-  return (
-    <WebsitePageWrapper
-      pageBoxProps={{
-        cssinline: {
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-          backgroundImage: 'url(/images/bubbles.svg)',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: {
-            xs: 'center right',
-            md: 'bottom right',
-          },
-        },
-      }}
-      seoProps={{
-        headTitle: 'Home',
-      }}
-    >
-      <HomeScreen />
-    </WebsitePageWrapper>
-  );
-}
+export default websitePageHOC(HomeScreen, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Home',
+    },
+    pageBoxProps: {
+      backgroundImage: 'url(/images/bubbles.svg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom right',
+    },
+  },
+});
