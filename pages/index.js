@@ -101,9 +101,16 @@ export default websitePageHOC(HomeScreen, {
       headTitle: 'Home',
     },
     pageBoxProps: {
-      backgroundImage: 'url(/images/bubbles.svg)',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'bottom right',
+      cssinline: {
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        backgroundImage: 'url(/images/bubbles.svg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: {
+          xs: 'center right',
+          md: 'bottom right',
+        },
+      },
     },
   },
 });
