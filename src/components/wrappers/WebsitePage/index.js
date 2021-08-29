@@ -7,6 +7,10 @@ import Modal from '../../commons/Modal';
 import Box from '../../foundation/Box';
 import FormCadastro from '../../patterns/FormCadastro';
 
+export const WebsitePageContext = React.createContext({
+  toggleModalCadastro: () => {},
+});
+
 // eslint-disable-next-line no-unused-vars
 export default function WebsitePageWrapper({ seoProps, pageBoxProps, children }) {
   const [isModalOpen, setModalState] = React.useState(false);
@@ -15,27 +19,36 @@ export default function WebsitePageWrapper({ seoProps, pageBoxProps, children })
   };
 
   return (
-    <Box
-      cssinline={cssinline}
+    <WebsitePageContext.Provider
+      value={{
+        toggleModalCadastro: () => {
+          setModalState(!isModalOpen);
+        },
+      }}
     >
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalState(false);
-        }}
+
+      <Box
+        cssinline={cssinline}
       >
-        {(propsDoModal) => (
-          <FormCadastro propsDoModal={propsDoModal} />
-        )}
-      </Modal>
-      <Menu
-        onOpenModal={() => setModalState(true)}
-      />
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setModalState(false);
+          }}
+        >
+          {(propsDoModal) => (
+            <FormCadastro propsDoModal={propsDoModal} />
+          )}
+        </Modal>
+        <Menu
+          onOpenModal={() => setModalState(true)}
+        />
 
-      {children}
+        {children}
 
-      <Footer />
-    </Box>
+        <Footer />
+      </Box>
+    </WebsitePageContext.Provider>
   );
 }
 
