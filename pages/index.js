@@ -39,7 +39,9 @@ export default function Home() {
         )}
       </Modal>
 
-      <Menu />
+      <Menu
+        onOpenModal={() => setModalState(true)}
+      />
 
       <Grid.Container>
         <Grid.Row>

@@ -4,6 +4,7 @@ import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import cssInline from '../../../theme/utils/cssInline';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
+import Link from '../../commons/Link';
 
 const paragraph1 = css`
   ${({ theme }) => css`
@@ -51,12 +52,16 @@ const TextBase = styled.span`
 `;
 
 export default function Text({
-  tag, variant, children, ...props
+  tag, variant, children, href, ...props
 }) {
+  const typeTag = href ? Link : tag;
+  const propsHref = href ? { href } : '';
   return (
     <TextBase
-      as={tag}
+      as={typeTag}
       variant={variant}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...propsHref}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     >
@@ -69,10 +74,15 @@ Text.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
   children: null,
+  href: false,
 };
 
 Text.propTypes = {
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span', 'input']),
   variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
   children: PropTypes.node,
+  href: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
 };
