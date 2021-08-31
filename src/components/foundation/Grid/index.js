@@ -24,6 +24,7 @@ const Container = styled.div`
             max-width: 1222px;
         `,
   })};
+  ${cssInline}
 `;
 
 const Row = styled.div`
